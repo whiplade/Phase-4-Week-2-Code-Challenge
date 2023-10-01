@@ -1,56 +1,3 @@
-# from app import app, db
-# from faker import Faker
-# import random
-# from models import Restaurant, Pizza, RestaurantPizza
-
-# fake = Faker()
-
-# def seed():
-#     # Create and add fake restaurants
-#     for _ in range(5):  # Adjust the number of restaurants as needed
-#         restaurant = Restaurant(
-#             name=fake.company(),
-#             address=fake.address(),
-#         )
-#         db.session.add(restaurant)
-
-#     db.session.commit()
-
-#     # Create and add fake pizzas
-#     for _ in range(10):  # Adjust the number of pizzas as needed
-#     # Generate a unique name
-#         unique_name = fake.word()
-#         while Pizza.query.filter_by(name=unique_name).first() is not None:
-#             unique_name = fake.word()
-
-#         pizza = Pizza(
-#             name=unique_name,
-#             ingredients=','.join(fake.words(3)),  # Join ingredients into a comma-separated string
-#             price=random.randint(5, 25),
-#         )
-#         db.session.add(pizza)
-
-#     db.session.commit()
-
-#     # Associate fake pizzas with fake restaurants using the RestaurantPizza association table
-#     restaurants = Restaurant.query.all()
-#     pizzas = Pizza.query.all()
-
-#     for restaurant in restaurants:
-#         pizzas_for_restaurant = random.sample(pizzas, random.randint(1, 3))
-#         for pizza in pizzas_for_restaurant:
-#             restaurant_pizza = RestaurantPizza(restaurant_id=restaurant.id, pizza_id=pizza.id)
-#             db.session.add(restaurant_pizza)
-
-
-#     db.session.commit()
-
-#     print("Database seeded successfully!")
-
-# if __name__ == '__main__':
-#     with app.app_context():
-#         seed()
-
 from app import app, db
 from faker import Faker
 import random
@@ -69,7 +16,7 @@ def seed():
     RestaurantPizza.query.delete()
     
     # Create and add fake restaurants
-    for _ in range(5):
+    for _ in range(10):
         restaurant = Restaurant(
             name=fake.company(),
             address=fake.address(),
@@ -85,7 +32,6 @@ def seed():
         pizza = Pizza(
             name=pizza_name,
             ingredients=','.join(pizza_ingredient_list),
-            price=random.randint(5, 25),
         )
         db.session.add(pizza)
 
@@ -98,7 +44,7 @@ def seed():
     for restaurant in restaurants:
         pizzas_for_restaurant = random.sample(pizzas, random.randint(1, 3))
         for pizza in pizzas_for_restaurant:
-            restaurant_pizza = RestaurantPizza(restaurant_id=restaurant.id, pizza_id=pizza.id)
+            restaurant_pizza = RestaurantPizza(price=random.randint(5, 25), restaurant_id=restaurant.id, pizza_id=pizza.id)
             db.session.add(restaurant_pizza)
 
     db.session.commit()
