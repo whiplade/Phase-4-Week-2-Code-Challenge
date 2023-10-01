@@ -5,7 +5,6 @@ from models import Restaurant, Pizza, RestaurantPizza
 
 fake = Faker()
 
-# Predefined lists of pizza names and ingredients for a more realistic seeding
 pizza_names = ['Margherita', 'Pepperoni', 'Quattro Formaggi', 'Hawaiian', 'Vegetarian', 'Meat Lovers', 'Mushroom Lovers', 'BBQ Chicken', 'Capricciosa', 'Supreme']
 pizza_ingredients = ['Cheese', 'Tomatoes', 'Pepperoni', 'Mushrooms', 'Onions', 'Bell Peppers', 'Olives', 'Ham', 'Pineapple', 'Bacon', 'Chicken', 'BBQ Sauce']
 
@@ -15,7 +14,6 @@ def seed():
     Pizza.query.delete()
     RestaurantPizza.query.delete()
     
-    # Create and add fake restaurants
     for _ in range(10):
         restaurant = Restaurant(
             name=fake.company(),
@@ -25,7 +23,6 @@ def seed():
 
     db.session.commit()
 
-    # Create and add fake pizzas with realistic names and ingredients
     for _ in range(10):
         pizza_name = random.choice(pizza_names)
         pizza_ingredient_list = random.sample(pizza_ingredients, random.randint(2, 5))
@@ -37,7 +34,6 @@ def seed():
 
     db.session.commit()
 
-    # Associate fake pizzas with fake restaurants using the RestaurantPizza association table
     restaurants = Restaurant.query.all()
     pizzas = Pizza.query.all()
 
