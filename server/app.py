@@ -15,7 +15,7 @@ db.init_app(app)
 
 @app.route('/')
 def home():
-    return f'<h1>Hello, Welcome to the Pizza Restaurant App!</h1>'
+    return f'<h1>Pizza? Restaurants? You are in the right place!</h1>'
 
 @app.route("/restaurants", methods=['GET'])
 def get_restaurants():
