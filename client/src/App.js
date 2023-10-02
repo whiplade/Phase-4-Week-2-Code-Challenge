@@ -8,14 +8,7 @@ function App() {
   return (
     <Router>
       <div>
-        <h1>Welcome to the Pizza Restaurant App</h1>
-        <nav>
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-          </ul>
-        </nav>
+        <h1>Welcome to the Pizza Restaurant App!</h1>
 
         <Routes>
           <Route path="/" element={<RestaurantList/>} />
