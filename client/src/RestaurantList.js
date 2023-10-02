@@ -37,7 +37,7 @@ return (
       <ul>
         {restaurants.map((restaurant) => (
           <li key={restaurant.id}>
-            <p onClick={() =>handleNavigate(restaurant.id)}>{restaurant.name}</p>
+            <p className='underline' onClick={() =>handleNavigate(restaurant.id)}>{restaurant.name}</p>
             <button onClick={() => handleDelete(restaurant.id)}>Delete</button>
           </li>
         ))}
